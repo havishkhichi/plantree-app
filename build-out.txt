@@ -1,0 +1,27 @@
+
+> ucip@0.1.0 build
+> next build
+
+▲ Next.js 16.2.7 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 12.4s
+  Running TypeScript ...
+Failed to type check.
+
+./components/dashboard/climate-map.tsx:30:7
+Type error: Type 'Map$1' is not assignable to type '{ addSource: (id: string, src: object) => void; addLayer: (layer: object) => void; remove: () => void; flyTo: (opts: object) => void; on: (event: string, cb: () => void) => void; }'.
+  Types of property 'addSource' are incompatible.
+    Type '(id: string, source: SourceSpecification | CanvasSourceSpecification) => Map$1' is not assignable to type '(id: string, src: object) => void'.
+      Types of parameters 'source' and 'src' are incompatible.
+        Type 'object' is not assignable to type 'SourceSpecification | CanvasSourceSpecification'.
+
+  [90m28 |[0m
+  [90m29 |[0m     [36mimport[0m([32m'maplibre-gl'[0m).then((ml) => {
+[31m[1m>[0m [90m30 |[0m       map = [36mnew[0m ml.[36mdefault[0m.[33mMap[0m({
+  [90m   |[0m       [31m[1m^[0m
+  [90m31 |[0m         container: containerRef.current!,
+  [90m32 |[0m         style: {
+  [90m33 |[0m           version: [35m8[0m,
+Next.js build worker exited with code: 1 and signal: null
