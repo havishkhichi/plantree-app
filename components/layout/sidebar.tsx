@@ -43,7 +43,7 @@ export function Sidebar() {
         return (
           <Link
             key={href}
-            href={disabled ? '#' : href}
+            href={href}
             className={cn(
               'flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3 px-2 md:px-3 py-1.5 md:py-2 mx-1 md:mx-2 rounded-lg text-[10px] md:text-sm font-medium transition-colors w-full md:w-auto',
               active
