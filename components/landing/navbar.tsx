@@ -10,7 +10,6 @@ export function Navbar() {
 
   const navLinks: { name: string; href: string; hasDropdown?: boolean }[] = [
     { name: 'Home', href: '/' },
-    { name: 'How It Works', href: '/how-it-works' },
     { name: 'About Me', href: '/about-me' },
   ];
 
@@ -30,11 +29,12 @@ export function Navbar() {
             </Link>
           </div>
           
-          <div className="hidden md:flex space-x-8 items-center">
+          <div className="flex space-x-4 md:space-x-8 items-center">
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (pathname !== '/' && link.href !== '/' && pathname?.startsWith(link.href));
               
               if (link.name === 'Home') {
+                if (pathname === '/') return null;
                 return (
                   <Link 
                     key={link.name} 

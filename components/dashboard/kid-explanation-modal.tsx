@@ -60,9 +60,6 @@ export function KidExplanationModal({ hotspot, isOpen, onOpenChange }: KidExplan
                 <div className="flex justify-between items-center bg-white p-2 rounded-xl shadow-sm">
                   <span>💨 Air Quality:</span> <strong className="text-yellow-600">{hotspot.aqi_score}/100</strong>
                 </div>
-                <div className="flex justify-between items-center bg-white p-2 rounded-xl shadow-sm">
-                  <span>👨‍👩‍👧‍👦 People:</span> <strong className="text-blue-500">{hotspot.population_score}/100</strong>
-                </div>
               </div>
             </div>
 

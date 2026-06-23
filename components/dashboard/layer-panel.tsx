@@ -14,8 +14,6 @@ const LAYERS: { id: LayerType; label: string; icon: React.ElementType; color: st
   { id: 'ndvi',       label: 'Vegetation',    icon: Leaf,        color: 'text-green-400'   },
   { id: 'aqi',        label: 'Air Quality',   icon: Wind,        color: 'text-yellow-400'  },
   { id: 'rainfall',   label: 'Rain Deficit',  icon: Droplets,    color: 'text-blue-400'    },
-  { id: 'gdi',        label: 'GDI Zones',     icon: BarChart2,   color: 'text-amber-400'   },
-  { id: 'population', label: 'Population',    icon: Users,       color: 'text-blue-400'    },
 ];
 
 export function LayerPanel({ layers, onToggle }: LayerPanelProps) {

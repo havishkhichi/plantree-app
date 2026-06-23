@@ -7,9 +7,7 @@
 
 export interface GDIInputs {
   heat: number;        // 0-100 (Temperature anomaly)
-  population: number;  // 0-100 (Density)
   ndvi: number;        // 0-1 (Vegetation)
-  aqi: number;         // 0-100 (Air Quality Deficit)
   rainfall: number;    // 0-100 (Rainfall Deficit)
   currentTemp: number;
   lastYearTemp: number;
@@ -27,11 +25,9 @@ export function computeGDI(inputs: GDIInputs): GDIOutputs {
   const vegDeficit = (1 - Math.max(0, Math.min(1, inputs.ndvi))) * 100;
 
   const rawScore = 
-    (inputs.heat * 0.30) +
-    (vegDeficit * 0.30) +
-    (inputs.aqi * 0.15) +
-    (inputs.rainfall * 0.15) +
-    (inputs.population * 0.10);
+    (inputs.heat * 0.40) +
+    (vegDeficit * 0.40) +
+    (inputs.rainfall * 0.20);
 
   const score = Math.round(Math.max(0, Math.min(100, rawScore)));
   
@@ -42,13 +38,11 @@ export function computeGDI(inputs: GDIInputs): GDIOutputs {
     // Optimal: No urgent plantation needed
     treesNeeded = 0;
   } else if (score < 40) {
-    // Normal: Light maintenance planting based on population
-    treesNeeded = Math.round((score * 5) + (inputs.population * 1));
+    // Normal: Light maintenance planting
+    treesNeeded = Math.round(score * 5);
   } else {
     // High, Severe, Critical: Aggressive plantation required
-    const baseTrees = score * 25;
-    const populationPenalty = (inputs.population) * 5;
-    treesNeeded = baseTrees + populationPenalty;
+    treesNeeded = score * 25;
 
     // Temperature anomaly modifier (Comparing current year to last year)
     const tempDiff = inputs.currentTemp - inputs.lastYearTemp;

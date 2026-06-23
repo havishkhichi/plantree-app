@@ -24,9 +24,8 @@ export function ClimateMap({ hotspots, layers, selectedId, center, zoom = 11, on
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<unknown>(null);
   const onHotspotSelectRef = useRef(onHotspotSelect);
-  const [basemap, setBasemap] = useState<'street' | 'satellite' | 'terrain'>('street');
-  const [showAqiMap, setShowAqiMap] = useState(false);
-  const [showTempMap, setShowTempMap] = useState(false);
+  const [basemap, setBasemap] = useState<'street' | 'satellite'>('street');
+
 
   useEffect(() => {
     onHotspotSelectRef.current = onHotspotSelect;
@@ -139,32 +138,12 @@ export function ClimateMap({ hotspots, layers, selectedId, center, zoom = 11, on
 
         map.addSource('satellite', {
           type: 'raster',
-          tiles: [`https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_SNPP_CorrectedReflectance_TrueColor/default/${gibsDate}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg`],
+          tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],
           tileSize: 256,
         });
         map.addLayer({ id: 'satellite-tiles', type: 'raster', source: 'satellite', layout: { visibility: 'none' } }, 'gdi-fill');
 
-        map.addSource('terrain', {
-          type: 'raster',
-          tiles: ['https://tile.opentopomap.org/{z}/{x}/{y}.png'],
-          tileSize: 256,
-        });
-        map.addLayer({ id: 'terrain-tiles', type: 'raster', source: 'terrain', layout: { visibility: 'none' } }, 'gdi-fill');
 
-        map.addSource('waqi', {
-          type: 'raster',
-          // NASA Aerosol Optical Depth proxy
-          tiles: [`https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_Aerosol/default/${gibsDate}/GoogleMapsCompatible_Level6/{z}/{y}/{x}.png`],
-          tileSize: 256,
-        });
-        map.addLayer({ id: 'waqi-tiles', type: 'raster', source: 'waqi', layout: { visibility: 'none' }, paint: { 'raster-opacity': 0.6 } }, 'gdi-fill');
-
-        map.addSource('temp', {
-          type: 'raster',
-          tiles: [`https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_Land_Surface_Temp_Day/default/${gibsDate}/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png`],
-          tileSize: 256,
-        });
-        map.addLayer({ id: 'temp-tiles', type: 'raster', source: 'temp', layout: { visibility: 'none' }, paint: { 'raster-opacity': 0.6 } }, 'gdi-fill');
 
         map.addLayer({
           id: 'gdi-outline',
@@ -256,27 +235,10 @@ export function ClimateMap({ hotspots, layers, selectedId, center, zoom = 11, on
     const map = mapRef.current as any;
     if (map.getLayer && map.getLayer('satellite-tiles')) {
       map.setLayoutProperty('satellite-tiles', 'visibility', basemap === 'satellite' ? 'visible' : 'none');
-      map.setLayoutProperty('terrain-tiles', 'visibility', basemap === 'terrain' ? 'visible' : 'none');
     }
   }, [basemap]);
 
-  // Toggle AQI Layer
-  useEffect(() => {
-    if (!mapRef.current) return;
-    const map = mapRef.current as any;
-    if (map.getLayer && map.getLayer('waqi-tiles')) {
-      map.setLayoutProperty('waqi-tiles', 'visibility', showAqiMap ? 'visible' : 'none');
-    }
-  }, [showAqiMap]);
 
-  // Toggle Temp Layer
-  useEffect(() => {
-    if (!mapRef.current) return;
-    const map = mapRef.current as any;
-    if (map.getLayer && map.getLayer('temp-tiles')) {
-      map.setLayoutProperty('temp-tiles', 'visibility', showTempMap ? 'visible' : 'none');
-    }
-  }, [showTempMap]);
 
   return (
     <div className="relative w-full h-full rounded-xl overflow-hidden">
@@ -297,27 +259,9 @@ export function ClimateMap({ hotspots, layers, selectedId, center, zoom = 11, on
           >
             Satellite
           </button>
-          <button 
-            onClick={() => setBasemap('terrain')}
-            className={`px-3 py-2 text-left border-t border-slate-100 transition-colors ${basemap === 'terrain' ? 'bg-green-600 text-white font-bold' : 'hover:bg-slate-100 text-slate-600'}`}
-          >
-            Terrain
-          </button>
         </div>
 
-        <button 
-          onClick={() => setShowAqiMap(!showAqiMap)}
-          className={`rounded-lg shadow-md border px-3 py-2 text-xs font-medium transition-colors text-left ${showAqiMap ? 'bg-yellow-400 text-yellow-900 border-yellow-500 font-bold' : 'bg-white/90 backdrop-blur border-slate-200 text-slate-600 hover:bg-slate-100'}`}
-        >
-          Air Quality Layer
-        </button>
 
-        <button 
-          onClick={() => setShowTempMap(!showTempMap)}
-          className={`rounded-lg shadow-md border px-3 py-2 text-xs font-medium transition-colors text-left ${showTempMap ? 'bg-red-400 text-red-900 border-red-500 font-bold' : 'bg-white/90 backdrop-blur border-slate-200 text-slate-600 hover:bg-slate-100'}`}
-        >
-          Temperature Layer
-        </button>
       </div>
     </div>
   );

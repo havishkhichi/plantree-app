@@ -14,7 +14,7 @@ import { Hotspot } from '@/lib/types';
 import { MOCK_CITIES } from '@/lib/mock-data';
 
 function DashboardContent() {
-  const [zoneCount, setZoneCount] = useState(12);
+  const zoneCount = 5;
   const [hotspots, setHotspots] = useState<Hotspot[]>([]);
   const searchParams = useSearchParams();
   const cityId = searchParams.get('cityId');
@@ -84,9 +84,9 @@ function DashboardContent() {
       </div>
 
       {/* Map + hotspot list */}
-      <div className="flex gap-4 flex-1 min-h-0" style={{ height: 'calc(100vh - 220px)' }}>
+      <div className="flex flex-col lg:flex-row gap-4 flex-1 min-h-0 lg:h-[520px]">
         {/* Map */}
-        <div className="relative flex-1 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-sm">
+        <div className="relative h-[60vh] min-h-[450px] lg:h-auto flex-1 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-sm shrink-0 lg:shrink">
           <ClimateMap
             hotspots={hotspots}
             layers={layers}
@@ -128,25 +128,13 @@ function DashboardContent() {
         </div>
 
         {/* Hotspot sidebar */}
-        <div className="w-72 flex flex-col gap-2 overflow-y-auto shrink-0">
+        <div className="w-full lg:w-72 flex flex-col gap-2 overflow-y-auto shrink-0 lg:h-full">
           <div className="flex items-center justify-between px-1">
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
               Priority Zones
             </p>
             <div className="flex items-center gap-2 bg-white px-2 py-1 rounded border border-slate-200">
-              <label htmlFor="dashZoneCount" className="text-[10px] text-slate-500 font-medium">Limit:</label>
-              <input 
-                id="dashZoneCount"
-                type="number" 
-                min="3" 
-                max="15" 
-                value={zoneCount}
-                onChange={(e) => {
-                  const val = parseInt(e.target.value);
-                  if (!isNaN(val)) setZoneCount(Math.min(15, Math.max(3, val)));
-                }}
-                className="w-10 bg-transparent text-slate-800 text-xs font-bold text-center border-none focus:outline-none focus:ring-1 focus:ring-emerald-500 rounded p-0"
-              />
+              <span className="text-[10px] text-slate-500 font-medium">Limit: 5</span>
             </div>
           </div>
           {hotspots.map((h) => (

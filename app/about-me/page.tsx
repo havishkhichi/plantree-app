@@ -8,7 +8,7 @@ export default function AboutMePage() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-green-100 selection:text-green-900 flex flex-col">
       <Navbar />
       
-      <main className="flex-1 flex flex-col items-center py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <main className="flex-1 flex flex-col items-center pt-6 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Dynamic Colorful Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-blue-50 to-emerald-100 z-0"></div>
         <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] rounded-full bg-emerald-300/20 blur-[100px] mix-blend-multiply pointer-events-none animate-[pulse_8s_ease-in-out_infinite]"></div>
@@ -25,19 +25,20 @@ export default function AboutMePage() {
           <div className="bg-white/70 backdrop-blur-xl rounded-[2.5rem] shadow-2xl overflow-hidden border border-white flex flex-col lg:flex-row transform transition-all duration-500 hover:shadow-green-500/10 hover:-translate-y-1">
             
             {/* Left Column: Profile Card */}
-            <div className="w-full lg:w-2/5 p-8 relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 to-slate-800 overflow-hidden">
+            <div className="w-full lg:w-2/5 p-6 relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 to-slate-800 overflow-hidden">
               <AnimatedCodeBackground />
               
               {/* Decorative rings */}
               <div className="absolute w-64 h-64 border border-white/10 rounded-full animate-[spin_10s_linear_infinite]"></div>
               <div className="absolute w-80 h-80 border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
 
-              <div className="relative z-10 w-48 h-48 mb-8 rounded-full overflow-hidden border-4 border-emerald-400 shadow-[0_0_30px_rgba(52,211,153,0.3)] group cursor-pointer">
+              <div className="relative z-10 w-full max-w-[280px] mb-4 rounded-xl overflow-hidden border-4 border-emerald-400 shadow-[0_0_30px_rgba(52,211,153,0.3)] group cursor-pointer bg-white">
                 <Image 
-                  src="/images/hk2.jpg" 
+                  src="/images/havish_new.png" 
                   alt="Havish Khichi" 
-                  fill 
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
               
@@ -55,16 +56,16 @@ export default function AboutMePage() {
             </div>
 
             {/* Right Column: Bio Content */}
-            <div className="w-full lg:w-3/5 p-10 lg:p-14 bg-white/60 relative">
-              <div className="absolute top-10 right-10 opacity-10">
-                <Leaf className="w-32 h-32 text-green-600" />
+            <div className="w-full lg:w-3/5 p-6 lg:p-8 bg-white/60 relative">
+              <div className="absolute top-6 right-6 opacity-10">
+                <Leaf className="w-24 h-24 text-green-600" />
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-4 flex items-center gap-3">
                 Hello, Everyone! 👋
               </h2>
               
-              <div className="space-y-6 text-lg text-slate-600 leading-relaxed relative z-10">
+              <div className="space-y-4 text-base text-slate-600 leading-relaxed relative z-10">
                 <p>
                   I am <strong className="text-green-700 font-extrabold">12 years old</strong> and I live in the beautiful city of <strong className="text-green-700 font-extrabold">Indore</strong>. I currently study in <strong className="text-slate-800">Class 6th</strong>, and when I'm not studying, you'll usually find me playing Chess or writing code.
                 </p>
@@ -81,7 +82,7 @@ export default function AboutMePage() {
                 </p>
               </div>
 
-              <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10">
                 
                 <div className="bg-white p-5 rounded-2xl shadow-lg border border-slate-100 flex items-start gap-4 hover:-translate-y-1 transition-transform duration-300">
                   <div className="bg-gradient-to-br from-blue-400 to-blue-600 text-white p-3 rounded-xl shadow-md">
@@ -103,6 +104,18 @@ export default function AboutMePage() {
                   </div>
                 </div>
 
+              </div>
+
+              <div className="mt-8 flex justify-start relative z-10">
+                <a 
+                  href="https://www.linkedin.com/in/havishkhichi/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="bg-[#0A66C2] hover:bg-[#004182] text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-colors shadow-lg"
+                >
+                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  Connect on LinkedIn
+                </a>
               </div>
             </div>
 

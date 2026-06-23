@@ -52,9 +52,7 @@ export function generateMockHotspots(city: City, count: number = 12, nasaData?: 
 
     const { score, treesNeeded, coolingEffect, co2Absorption, oxygenProduced } = computeGDI({
       heat: heatScore,
-      population: popScore,
       ndvi: ndviScore,
-      aqi: aqiScore,
       rainfall: rainfallScore,
       currentTemp,
       lastYearTemp
