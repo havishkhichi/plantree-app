@@ -38,7 +38,7 @@ export function Sidebar() {
         </div>
       </Link>
 
-      {NAV.map(({ href, icon: Icon, label, disabled }) => {
+      {NAV.map(({ href, icon: Icon, label }) => {
         const active = path.startsWith(href);
         return (
           <Link
@@ -48,10 +48,8 @@ export function Sidebar() {
               'flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3 px-2 md:px-3 py-1.5 md:py-2 mx-1 md:mx-2 rounded-lg text-[10px] md:text-sm font-medium transition-colors w-full md:w-auto',
               active
                 ? 'bg-green-50 text-green-700 font-semibold'
-                : 'text-slate-500 hover:text-green-600 hover:bg-slate-50',
-              disabled && 'opacity-50 pointer-events-none cursor-not-allowed'
+                : 'text-slate-500 hover:text-green-600 hover:bg-slate-50'
             )}
-            onClick={(e) => disabled && e.preventDefault()}
           >
             <Icon className="w-5 h-5 md:w-4 md:h-4 shrink-0" />
             <span className="block md:block leading-tight text-center">{label}</span>
