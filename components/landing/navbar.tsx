@@ -21,7 +21,7 @@ export function Navbar() {
             <Link href="/" className="relative w-20 h-20 mix-blend-multiply -ml-2 block hover:opacity-80 transition-opacity">
               <Image 
                 src="/images/plantree_logo_v2.png" 
-                alt="Plantree Logo" 
+                alt="Greenfinity Logo" 
                 fill
                 className="object-contain"
                 priority

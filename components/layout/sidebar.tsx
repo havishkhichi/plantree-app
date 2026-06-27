@@ -30,7 +30,7 @@ export function Sidebar() {
         <div className="relative w-20 h-20 mix-blend-multiply overflow-hidden">
           <Image 
             src="/images/plantree_logo_v2.png" 
-            alt="Plantree Logo" 
+            alt="Greenfinity Logo" 
             fill
             className="object-contain"
             priority

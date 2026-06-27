@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Plantree — Plan a Tree. Plant a Future.',
-  description: 'Identify, rank, and visualize urban heat vulnerability zones to plant trees and cool cities.',
+  title: 'Greenfinity — Plan a Tree. Plant a Future.',
+  description: 'Use satellite data and AI to find the best places to plant trees and cool our cities.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -51,8 +51,8 @@ export default function HowItWorksPage() {
               </div>
               <div className="w-full md:w-1/2">
                 <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Find Your Focus Area</h2>
-                <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  Start by using the powerful <strong className="text-slate-800">Place Search</strong>. You can search for your neighborhood, your city, or any region across the globe. Plantree will instantly center the interactive map on your location and load the local climate profiles.
+                <p className="text-slate-600 text-lg leading-relaxed">
+                  Start by using the powerful <strong className="text-slate-800">Place Search</strong>. You can search for your neighborhood, your city, or any region across the globe. Greenfinity will instantly center the interactive map on your location and load the local climate profiles.
                 </p>
               </div>
             </div>
@@ -89,8 +89,8 @@ export default function HowItWorksPage() {
             <div className="flex flex-col items-center text-center pb-8 border-b border-slate-100">
               <div className="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center font-black text-2xl shadow-sm mb-6">3</div>
               <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Toggle Rich API Data Layers</h2>
-              <p className="text-lg text-slate-600 max-w-3xl leading-relaxed">
-                Dive deep into the environmental metrics that make up our analysis. Plantree pulls live satellite and API data to let you visualize specific factors directly on the map.
+              <p className="text-slate-600 text-lg leading-relaxed">
+                Dive deep into the environmental metrics that make up our analysis. Greenfinity pulls live satellite and API data to let you visualize specific factors directly on the map.
               </p>
             </div>
 
